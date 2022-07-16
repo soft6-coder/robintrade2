@@ -594,7 +594,7 @@
     }
 
     var defaultRelativeTime = {
-        future: 'in %s',
+        : 'in %s',
         past: '%s ago',
         s: 'a few seconds',
         ss: '%d seconds',
@@ -612,15 +612,15 @@
         yy: '%d years',
     };
 
-    function relativeTime(number, withoutSuffix, string, isFuture) {
+    function relativeTime(number, withoutSuffix, string, is) {
         var output = this._relativeTime[string];
         return isFunction(output)
-            ? output(number, withoutSuffix, string, isFuture)
+            ? output(number, withoutSuffix, string, is)
             : output.replace(/%d/i, number);
     }
 
-    function pastFuture(diff, output) {
-        var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
+    function past(diff, output) {
+        var format = this._relativeTime[diff > 0 ? '' : 'past'];
         return isFunction(format) ? format(output) : format.replace(/%s/i, output);
     }
 
@@ -5000,7 +5000,7 @@
     proto$1.preparse = preParsePostFormat;
     proto$1.postformat = preParsePostFormat;
     proto$1.relativeTime = relativeTime;
-    proto$1.pastFuture = pastFuture;
+    proto$1.past = past;
     proto$1.set = set;
     proto$1.eras = localeEras;
     proto$1.erasParse = localeErasParse;
@@ -5392,8 +5392,8 @@
         };
 
     // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
-    function substituteTimeAgo(string, number, withoutSuffix, isFuture, locale) {
-        return locale.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
+    function substituteTimeAgo(string, number, withoutSuffix, is, locale) {
+        return locale.relativeTime(number || 1, !!withoutSuffix, string, is);
     }
 
     function relativeTime$1(posNegDuration, withoutSuffix, thresholds, locale) {
@@ -5487,7 +5487,7 @@
         output = relativeTime$1(this, !withSuffix, th, locale);
 
         if (withSuffix) {
-            output = locale.pastFuture(+this, output);
+            output = locale.past(+this, output);
         }
 
         return locale.postformat(output);

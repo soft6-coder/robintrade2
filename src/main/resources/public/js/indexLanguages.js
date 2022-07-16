@@ -81,14 +81,14 @@ let contents = [
   (sell = [{ contentName: "sell" }, { en: "sell" }, { spn: "" }, { fre: "" }]),
   (content1 = [
     { contentName: "content1" },
-    { en: "The future of finance" },
+    { en: "The  of finance" },
     { spn: "" },
     { fre: "" },
   ]),
   (content2 = [
     { contentName: "content2" },
     {
-      en: "The old way of doing things doesn't cut it anymore. With FUTURE SPACE, you can use cryptocurrency to earn interest at up to 1000% APY and more, borrow cash, and buy or sell crypto. There are no hidden fees, and no reason to wait.",
+      en: "The old way of doing things doesn't cut it anymore. With Robin Trade, you can use cryptocurrency to earn interest at up to 1000% APY and more, borrow cash, and buy or sell crypto. There are no hidden fees, and no reason to wait.",
     },
     { spn: "" },
     { fre: "" },
