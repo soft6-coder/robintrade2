@@ -53,14 +53,14 @@ public class UserService {
 			}
 		}
 
-		try {
-			sendVerificationEmail(user);
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			sendVerificationEmail(user);
+//		} catch (MessagingException e) {
+//			e.printStackTrace();
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		Account account = new Account();
 		if (user.getReferral() != null) {
 			account.setAccountBalance(20);
@@ -182,7 +182,7 @@ public class UserService {
 	
 	public User signIn(String email, String password) {
 		Optional<User> user = userRepository.findByEmailAndPassword(email, password);
-		return new User();
+		return user.get();
 		
 	}
 
